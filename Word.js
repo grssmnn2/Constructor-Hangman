@@ -1,5 +1,5 @@
 // need to require Letter.js
-var Letter = require('Letter.js')
+var Letter = require('./Letter.js')
 
 function Word (){
     // array representing the letters of underlying word

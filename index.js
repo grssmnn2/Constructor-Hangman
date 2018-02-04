@@ -1,11 +1,13 @@
 // this file requires Word.js
-var Word = require("Word.js");
-// require inquirer package
-var inquirer = require('inquirer');
+var Word = require("./Word.js");
 // require prompt package
 var prompt = require('prompt');
 
-// randomly select a word and use Word constructor to store value
+// array of animals
+var gameWords = ["rabbit", "dog", "squirrel", "whale", "chipmunk", "pigeon", "aardvark", "hedgehog", "gorilla"];
+// choose random animal from array
+var randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
+// use Word.js to store value of randomWord
 
 
 // prompt user for guess and keep track of user's remaining guess
@@ -22,9 +24,8 @@ var schema = {
   prompt.start(); 
   prompt.get(schema, function (err, result) {
     // Log the results.
-    console.log('  Guesses So Far: ' + result.userGuess);
+   // store guesses in an array
+    var guesses = [];
+    guesses.push(result.userGuess);
+    console.log('  Guesses So Far: ' + guesses);
   });
-
-inquirer.prompt([{type: 'input'}]).then(answers => {
-    // Use user feedback for... whatever!!
-});
