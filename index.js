@@ -8,10 +8,8 @@ var prompt = require('prompt');
 var gameWords = ["rabbit", "dog", "squirrel", "whale", "chipmunk", "pigeon", "aardvark", "hedgehog", "gorilla"];
 // choose random animal from array
 var randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
-console.log(randomWord);
 // guesses left is length of answer + 5
 var guessesLeft = randomWord.length + 5;
-console.log(guessesLeft);
 // array to hold user guesses
 var guesses = [];
 // use Word.js to store value of randomWord 
@@ -28,15 +26,25 @@ var schema = {
     }
   }; 
   // Start the prompt 
-  prompt.start(); 
+  prompt.start();
+
+ function ask(){
+  // ask for letters until no more guesses remain or user guesses word
   prompt.get(schema, function (err, result) {
-    // Log the results.
-   // store guesses in an array
+   // push user answer to guesses array
     guesses.push(result.GuessALetter);
+    // guessesLeft decreases with each guess
     guessesLeft--;
-    console.log('  Guesses So Far: ' + guesses);
+    console.log('Guesses So Far: ' + guesses);
     console.log('Guesses Left: ' + guessesLeft);
   });
+  };
+
+if(guessesLeft !==0){
+  ask();
+}else{
+  console.log("Better luck next time.");
+}
 
   exports.module = {
     randomWord: randomWord,
