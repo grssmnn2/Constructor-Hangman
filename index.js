@@ -14,11 +14,18 @@ var guessesLeft = randomWord.length + 5;
 var guesses = [];
 // use Word.js to store value of randomWord 
 
+// unless user has run out of guesses, keep asking for new input
+if(guessesLeft===0){
+  console.log("Better luck next time.");
+}else{
+  ask();
+  console.log("Guess a letter.");
+}
 // prompt user for guess and keep track of user's remaining guess
-
-var schema = {
+ function ask(){
+  var userGuess = {
     properties: {
-      GuessALetter: {
+      Guess: {
         pattern: /^[a-zA-Z\s]+$/,
         message: 'Guess must be only a letter',
         required: true
@@ -27,12 +34,10 @@ var schema = {
   }; 
   // Start the prompt 
   prompt.start();
-
- function ask(){
   // ask for letters until no more guesses remain or user guesses word
-  prompt.get(schema, function (err, result) {
+  prompt.get(userGuess, function (err, result) {
    // push user answer to guesses array
-    guesses.push(result.GuessALetter);
+    guesses.push(result.Guess);
     // guessesLeft decreases with each guess
     guessesLeft--;
     console.log('Guesses So Far: ' + guesses);
@@ -40,11 +45,7 @@ var schema = {
   });
   };
 
-if(guessesLeft !==0){
-  ask();
-}else{
-  console.log("Better luck next time.");
-}
+
 
   exports.module = {
     randomWord: randomWord,
