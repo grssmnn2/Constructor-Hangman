@@ -8,7 +8,7 @@ function Word (){
     // function that returns string representing the word. Should call the function on each letter obj.
     // function is first one defined in Letter.js, display charac. or underscore and concat together
     this.wordAsString = function(){
-
+        this.letterArr.join("");
     }
     // this is a function that takes charac as an argument and calls guess function on each letter
     // object, (second function defined in Letter.js)
@@ -18,6 +18,6 @@ function Word (){
 }
 
 // EXPORT MODULE anything index.js needs
-exports.module = {
+module.exports = {
 
 };

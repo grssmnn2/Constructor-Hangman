@@ -47,7 +47,7 @@ if(guessesLeft===0){
 
 
 
-  exports.module = {
+  module.exports = {
     randomWord: randomWord,
     guessesLeft: guessesLeft
   };
