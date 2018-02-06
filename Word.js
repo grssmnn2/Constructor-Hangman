@@ -3,8 +3,9 @@ var Letter = require('./Letter.js')
 var Index = require('./index.js');
 
 function Word (){
-    // array representing the letters of underlying word
-    this.letterArr = Index.randomWord.split("");
+    // array representing the letters of underlying word and replaced with dashes
+    this.letterArr = Index.randomWord.split(",");
+    console.log(this.LetterArr);
     // function that returns string representing the word. Should call the function on each letter obj.
     // function is first one defined in Letter.js, display charac. or underscore and concat together
     this.wordAsString = function(){
@@ -16,6 +17,8 @@ function Word (){
 
     }
 }
+
+Word();
 
 // EXPORT MODULE anything index.js needs
 module.exports = {
