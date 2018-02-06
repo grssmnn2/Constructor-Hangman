@@ -1,26 +1,31 @@
 // need to require Letter.js
 var Letter = require('./Letter.js')
-var Index = require('./index.js');
 
-function Word (){
-    // array representing the letters of underlying word and replaced with dashes
-    this.letterArr = Index.randomWord.split(",");
-    console.log(this.LetterArr);
-    // function that returns string representing the word. Should call the function on each letter obj.
-    // function is first one defined in Letter.js, display charac. or underscore and concat together
-    this.wordAsString = function(){
-        this.letterArr.join("");
+// THIS PAGE HOLDS ARRAY OF NEW LETTER OBJECTS REPRESENTING LETTERS OF UNDERLYING WORD
+// A FUNCTION THAT RETURNS STRING REPRESENTING WORD. DISPLAY UNDERSCORE OR CHARAC AND CONCAT BASED ON Letter.js
+// A FUNCTION THAT TAKES CHARAC AS ARGUMENT AND CALLS Letter.js GUESS FUNC ON EACH LETTER OBJ
+
+function Word (randomWord) {
+    // randomWord input
+    this.randomWord = randomWord;
+    // array of letters that will hold either dashes or letters
+    this.letters = [];
+    // function to return a string representing word
+    this.wordAsString = function(randomWord){
+        // initially array holds as many dashes as letters in word
+        for (var i = 0; i<this.randomWord.length; i++){
+            this.letters[i]="-";
+            // if a letter in the randomword equals a letter from user, display that letter in array
+            if (this.randomWord[i]===Letter.letter){
+                this.letters[i]=Letter.letter;
+            }
+        }
     }
-    // this is a function that takes charac as an argument and calls guess function on each letter
-    // object, (second function defined in Letter.js)
-    this.guess2 = function(){
+    // function to take character argument and use letter.js func on each letter obj
 
-    }
-}
-
-Word();
+};
 
 // EXPORT MODULE anything index.js needs
 module.exports = {
-
+    Word: Word
 };

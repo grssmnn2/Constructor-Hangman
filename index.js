@@ -1,15 +1,18 @@
 // this file requires Word.js
 var Word = require("./Word.js");
-// require prompt package
-var prompt = require('prompt');
+// require inquirer package
+var inquirer = require('inquirer');
+
+// THIS PAGE CHOOSES RANDOM WORD, STORES IN WORD CONSTRUCTOR
+// PROMPTS USER FOR GUESS AND KEEPS TRACK OF GUESSES
 
 
 // array of animals
 var gameWords = ["rabbit", "dog", "squirrel", "whale", "chipmunk", "pigeon", "aardvark", "hedgehog", "gorilla"];
 // choose random animal from array
-var randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
+Word.randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
 // guesses left is length of answer + 5
-var guessesLeft = randomWord.length + 5;
+var guessesLeft = Word.randomWord.length + 5;
 // array to hold user guesses
 var guesses = [];
 // use Word.js to store value of randomWord 
@@ -18,36 +21,19 @@ var guesses = [];
 if(guessesLeft===0){
   console.log("Better luck next time.");
 }else{
-  ask();
-  console.log("Guess a letter.");
+  console.log(Word.randomWord);
+  console.log("You have " + guessesLeft + " guesses left.");
 }
 // prompt user for guess and keep track of user's remaining guess
- function ask(){
-  var userGuess = {
-    properties: {
-      Guess: {
-        pattern: /^[a-zA-Z\s]+$/,
-        message: 'Guess must be only a letter',
-        required: true
-      }
-    }
-  }; 
-  // Start the prompt 
-  prompt.start();
-  // ask for letters until no more guesses remain or user guesses word
-  prompt.get(userGuess, function (err, result) {
-   // push user answer to guesses array
-    guesses.push(result.Guess);
-    // guessesLeft decreases with each guess
-    guessesLeft--;
-    console.log('Guesses So Far: ' + guesses);
-    console.log('Guesses Left: ' + guessesLeft);
+  inquirer.prompt([
+    {
+      message: "Type a letter to make a guess.",
+      type: "input",
+      name: "userGuess",
+      validate: /^[a-zA-Z\s]+$/,
+      required: true
+  } 
+]).then(function(answers){
+    var storage = new Letter (answers.userGuess);
+    guesses.push(storage);
   });
-  };
-
-
-
-  module.exports = {
-    randomWord: randomWord,
-    guessesLeft: guessesLeft
-  };
