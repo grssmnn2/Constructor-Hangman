@@ -19,27 +19,31 @@ var guesses = [];
 
 // unless user has run out of guesses, keep asking for new input
 function ask(){
-if (guessesLeft > 0){
   console.log(Word.randomWord);
-  console.log("You have " + guessesLeft + " guesses left.");
 // prompt user for guess and keep track of user's remaining guess
   inquirer.prompt([
     {
       message: "Type a letter to make a guess.",
-      name: "userGuess"
+      name: "userGuess",
+      type: "input"
       // validate: function validateGuess(userGuess){
       //   return userGuess !== /^[a-zA-Z\s]+$/;
       // }
   } 
 ]).then(function(answers){
-    var storage = new Word (answers.userGuess);
-    guessesLeft--;
+    var storage = answers.userGuess;
+    if (guessesLeft > 0){
     guesses.push(storage);
+    guessesLeft--;
+    console.log("You have " + guessesLeft + " guesses left.");
+    console.log("Already guessed: " + guesses);
     ask();
-  });
-}else{
-  console.log("Better luck next time.");
+    // else if guesses left is 0 and user didnt guess word
+    // tell them game over
+    // else YOU WIN!!!
+  }else{
+    console.log("Better luck next time!");
+  }
+});
 }
-
-};
 ask();

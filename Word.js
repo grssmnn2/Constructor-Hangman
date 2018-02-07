@@ -14,7 +14,7 @@ function Word (randomWord) {
     this.wordAsString = function(randomWord){
         // initially array holds as many dashes as letters in word
         for (var i = 0; i<this.randomWord.length; i++){
-            this.letters[i]="-";
+            this.letters.push("-");
             // if a letter in the randomword equals a letter from user, display that letter in array
             if (this.randomWord[i]===Letter.letter){
                 this.letters[i]=Letter.letter;
@@ -24,6 +24,9 @@ function Word (randomWord) {
     // function to take character argument and use letter.js func on each letter obj
 
 };
+
+// var object = new Letter("l", true);
+// Letter.returnLetter();
 
 // EXPORT MODULE anything index.js needs
 module.exports = {

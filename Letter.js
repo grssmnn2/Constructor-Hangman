@@ -5,8 +5,10 @@ function Letter(letter, guessed) {
     this.letterGuessed = guessed;
     // returns letter if guessed is true, or shows all underscores if guessed is false
     this.returnLetter = function (){
+        console.log(this.letter);
         if (this.letterGuessed){
             return this.letter;
+            
         }else{
             return "-";
         }
@@ -16,10 +18,11 @@ function Letter(letter, guessed) {
         // if letter matches character
         if(this.letter===character){
             this.letterGuessed=true;
+        }else{
+            this.letterGuessed=false;
         }
     };
 };
-
 // EXPORT MODULE anything Word.js needs
 module.exports = {
     Letter: Letter
