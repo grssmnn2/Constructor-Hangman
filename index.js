@@ -36,7 +36,7 @@ function ask(){
       }
 ]).then(function(answers){
     var storage = answers.userGuess;
-    if (guessesLeft > 0){
+    if (guessesLeft > 0 && guesses.indexOf(storage)=== -1){
     guesses.push(storage);
     guessesLeft--;
     console.log("You have " + guessesLeft + " guesses left.");
@@ -45,7 +45,11 @@ function ask(){
     // else if guesses left is 0 and user didnt guess word
     // tell them game over
     // else YOU WIN!!!
-  }else{
+  }else if(guessesLeft > 0 && guesses.indexOf(storage)!= -1){      
+    console.log("You've already guessed that letter.");
+    ask();
+  }
+  else{
     console.log("Better luck next time!");
   }
 });
