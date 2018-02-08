@@ -6,11 +6,15 @@ function Word(randomWord) {
     this.randomWord = randomWord;
     // array of letters that will hold either dashes or letters
     this.letters = [];
-    // function to take character argument and use letter.js func on each letter obj
-    this.check = function(){
-       Letter.guess();
-    };
+    this.check = function () {
+        // use letter constructor to check input and return
+        for (var i = 0; i < this.letters.length; i++) {
+            // take character argument and call guess func on each letter obj
+            Letter.guess(this.letters[i]);
+        }
+    }
 };
+
 // auto run toString by using prototype function
 Word.prototype.toString = function () {
     for (var i = 0; i < this.randomWord.length; i++) {
@@ -18,12 +22,9 @@ Word.prototype.toString = function () {
         // display "-" or actual letter depending on constructor output
         Letter.returnLetter(this.randomWord[i]);
         this.letters.push(new Letter(this.randomWord[i]));
-        // return array as string
-        this.letters.join();
-       
     }
+    this.letters.join();
 }
-
 // var object = new Letter("l", true);
 // Letter.returnLetter();
 
