@@ -14,20 +14,22 @@ function Word (randomWord) {
     this.wordAsString = function(){
         // initially array holds as many dashes as letters in word
         for (var i = 0; i<this.randomWord.length; i++){
-            this.letters.push(new Letter.Letter(this.randomWord[i]));
+            Letter.returnLetter(this.randomWord[i]);
+            // to use constructor on other page, enter require variable.constructor
+            this.letters.push(new Letter.Letter(this.randomWord[i]));            
             // if a letter in the randomword equals a letter from user, display that letter in array
+            // otherwise display -, this comes from testing each letter in Letter constructor
             }
-        }
+        };
     // function to take character argument and use letter.js func on each letter obj
     this.check = function(guess){
-        guess.Letter.guess();
+       Letter.guess(guess);
     };
 };
 
 // var object = new Letter("l", true);
 // Letter.returnLetter();
 
-// EXPORT MODULE anything index.js needs
 module.exports = {
     Word: Word
 };

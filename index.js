@@ -25,11 +25,11 @@ function ask(){
     {
       message: "Type a letter to make a guess.",
       name: "userGuess",
-      type: "input",
+      type: "input"
       // validate: function (value){
       //   var alpha = /^[a-zA-Z]+$/;
       //   if(value===alpha && value.length===1){
-      //     return true;
+      //     return value;
       //   }
       //     console.log(" Please only enter a letter.");
       //   }
