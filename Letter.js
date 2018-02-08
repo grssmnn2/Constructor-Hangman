@@ -1,8 +1,8 @@
-function Letter(letter, guessed) {
+function Letter(letter) {
     // string value to hold character for letter
     this.letter = letter;
     // boolean value to store if letter has been guessed yet (initially false)
-    this.letterGuessed = guessed;
+    this.letterGuessed = false;
     // returns letter if guessed is true, or shows all underscores if guessed is false
     this.returnLetter = function (){
         console.log(this.letter);
@@ -14,12 +14,10 @@ function Letter(letter, guessed) {
         }
     };
 
-    this.booleanCheck = function (character){
+    this.guess = function (character){
         // if letter matches character
         if(this.letter===character){
             this.letterGuessed=true;
-        }else{
-            this.letterGuessed=false;
         }
     };
 };

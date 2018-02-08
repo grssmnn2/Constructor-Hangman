@@ -11,18 +11,17 @@ function Word (randomWord) {
     // array of letters that will hold either dashes or letters
     this.letters = [];
     // function to return a string representing word
-    this.wordAsString = function(randomWord){
+    this.wordAsString = function(){
         // initially array holds as many dashes as letters in word
         for (var i = 0; i<this.randomWord.length; i++){
-            this.letters.push("-");
+            this.letters.push(new Letter.Letter(this.randomWord[i]));
             // if a letter in the randomword equals a letter from user, display that letter in array
-            if (this.randomWord[i]===Letter.letter){
-                this.letters[i]=Letter.letter;
             }
         }
-    }
     // function to take character argument and use letter.js func on each letter obj
-
+    this.check = function(guess){
+        guess.Letter.guess();
+    };
 };
 
 // var object = new Letter("l", true);
