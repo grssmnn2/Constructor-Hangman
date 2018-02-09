@@ -10,14 +10,12 @@ var wordToGuess = new Word (randomWord);
 // wordtoGuess.toString();
 // wordToGuess.check();
 // guesses left is length of answer + 3
-var guessesLeft = wordToGuess.length + 3;
+var guessesLeft = randomWord.length + 3;
 // array to hold user guesses
 var guesses = [];
 // unless user has run out of guesses, keep asking for new input
 function ask(){
   console.log(wordToGuess.toString());
-  // display all of the dashes OR letters in the given word
-  // wor
 // prompt user for guess and keep track of user's remaining guess
   inquirer.prompt([
     {

@@ -19,22 +19,12 @@ function Word(randomWord) {
         }
         return output;
     };
+    // this.guess = function(){
+    //     var dashLetter = "";
+    //     for (var i =0; i<this.letters.length; i++){
+    //         this.letters[i].guess();
+    //     }return dashLetter;
+    // }
 }
-// try to put in key up function to indicate what guess is supposed to be
-// window.addEventListener("keydown", function (guess) {
-        // use letter constructor to check input and return
-        // for (var i = 0; i < this.letters.length; i++) {
-            // take character argument and call guess func on each letter obj
-//             Letter.guess(guess);
-//             Letter.returnLetter(guess);
-//         }
-//     });
-// };
-
-// var animal = new Word("elephant");
-// console.log(animal);
-
-// var object = new Letter("l", true);
-// Letter.returnLetter();
 
 module.exports = Word;
