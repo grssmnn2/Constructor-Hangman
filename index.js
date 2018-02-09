@@ -2,24 +2,22 @@
 var Word = require("./Word.js");
 // require inquirer package
 var inquirer = require('inquirer');
-
-// THIS PAGE CHOOSES RANDOM WORD, STORES IN WORD CONSTRUCTOR
-// PROMPTS USER FOR GUESS AND KEEPS TRACK OF GUESSES
-
-
 // array of animals
 var gameWords = ["rabbit", "dog", "squirrel", "whale", "chipmunk", "pigeon", "aardvark", "hedgehog", "gorilla"];
-// choose random animal from array
-Word.randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
+// choose random animal from array amd store with Word.js
+var randomWord = gameWords[Math.floor(Math.random()*gameWords.length)];
+var wordToGuess = new Word (randomWord);
+// wordtoGuess.toString();
+// wordToGuess.check();
 // guesses left is length of answer + 3
-var guessesLeft = Word.randomWord.length + 3;
+var guessesLeft = wordToGuess.length + 3;
 // array to hold user guesses
 var guesses = [];
-// use Word.js to store value of randomWord 
-
 // unless user has run out of guesses, keep asking for new input
 function ask(){
-  console.log(Word.letters);
+  console.log(wordToGuess.toString());
+  // display all of the dashes OR letters in the given word
+  // wor
 // prompt user for guess and keep track of user's remaining guess
   inquirer.prompt([
     {
@@ -35,23 +33,21 @@ function ask(){
       //   }
       }
 ]).then(function(answers){
-    var storage = answers.userGuess;
-    if (guessesLeft > 0 && guesses.indexOf(storage)=== -1){
-    guesses.push(storage);
-    guessesLeft--;
-    console.log("You have " + guessesLeft + " guesses left.");
-    console.log("Already guessed: " + guesses);
-    ask();
-    // else if guesses left is 0 and user didnt guess word
-    // tell them game over
-    // else YOU WIN!!!
-  }else if(guessesLeft > 0 && guesses.indexOf(storage)!= -1){      
-    console.log("You've already guessed that letter.");
-    ask();
-  }
-  else{
-    console.log("Better luck next time!");
-  }
-});
+      var storage = answers.userGuess;
+      if (guessesLeft > 0 && guesses.indexOf(storage)=== -1){
+      guesses.push(storage);
+      guessesLeft--;
+      console.log("You have " + guessesLeft + " guesses left.");
+      console.log("Already guessed: " + guesses);
+      ask();
+    } else if(guessesLeft > 0 && guesses.indexOf(storage)!= -1){      
+      console.log("You've already guessed that letter.");
+      ask();
+    }
+    else{
+      console.log("Better luck next time!");
+    }
+        // else if word is complete and guesses >0 YOU WIN!!!
+  });
 }
 ask();
