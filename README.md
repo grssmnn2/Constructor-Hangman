@@ -1,5 +1,6 @@
 # Constructor-Hangman
 A Node Application Hangman Game
-Once prompted, start typing letters to guess the word represented by dashes.
-Dashes will change to letters once guessed correctly.
-Win the game by guessing the entire word.
+Once prompted, users enter letters in the command line to guess the word represented by dashes in a hangman
+style node application.
+
+This application uses Node JS, Javascript, and the Inquirer npm to prompt users for input and interact through the command line.

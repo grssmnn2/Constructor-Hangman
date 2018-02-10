@@ -20,7 +20,6 @@ function Letter(letter) {
             return " - ";        
     };
 };
-var cat = new Letter("a");
-cat.guess();
+
 module.exports = Letter;
 
