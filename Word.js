@@ -19,22 +19,16 @@ function Word(randomWord) {
         }
         return output;
     };
-    var trueFalse = false;
-    this.check = function (guess) {
+    // take a character input and call guess function on each letter object
+     this.guess = function (guess) {
        for (var i = 0; i<this.letters.length; i++){
-           if(guess == this.letters[i]){
-               return true;
+           if(guess === this.letters[i]){
+            this.letters[i].letterGuessed = true;
+              
            }
+           return true;
        }
-       var trueFalse = false;
-        // return a true or false boolean based on guess function for each letter obj.
-        for (var i = 0; i < this.letters.length; i++) {
-            if (this.letters[i].guess(guess)) {
-                this.letters[i].letterGuessed = true;
-                trueFalse = true;
-            }
-        }
-        return trueFalse;
+      
     }
 }
 
