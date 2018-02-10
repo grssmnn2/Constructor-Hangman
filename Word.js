@@ -1,5 +1,5 @@
 // need to require Letter.js
-var Letter = require('./Letter.js')
+var Letter = require('./Letter.js');
 
 function Word(randomWord) {
     // randomWord input
@@ -20,16 +20,23 @@ function Word(randomWord) {
         return output;
     };
     // take a character input and call guess function on each letter object
-     this.guess = function (guess) {
+     this.checkGuess = function (guess) {
        for (var i = 0; i<this.letters.length; i++){
-           if(guess === this.letters[i]){
-            this.letters[i].letterGuessed = true;
-              
-           }
-           return true;
-       }
-      
+        var checkUserInput = new Letter(guess);
+        checkUserInput.guess(guess);
+        // console.log(this.letters[i]);
+        // console.log(guess);
+        // console.log(cat);
+        //    if(this.letters[i]===guess){
+        //        this.letters[i]=guess;           
+        //         this.letterGuessed = true;
+            
+        //    }              
+        
+        }
+        
     }
 }
-
+var newWord = new Word("cat");
+newWord.checkGuess("c");
 module.exports = Word;

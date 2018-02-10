@@ -3,13 +3,13 @@ function Letter(letter) {
     this.letter = letter;
     // boolean value to store if letter has been guessed yet (initially false)
     this.letterGuessed = false;
-    this.guess = function(guess){
-    if (this.letter === guess) {
-        // if guess matches the letter in the word
-        // change letterGuessed to true
+    this.guess = function (userLetter) {
+        if (this.letter === userLetter) {
+            // if guess matches the letter in the word
+            // change letterGuessed to true
             this.letterGuessed = true;
-        }  
-    }  
+        }
+    }
     // returns letter if guessed is true, or shows all underscores if guessed is false
     this.returnLetter = function () {
         // if the letter has been guessed
@@ -17,7 +17,8 @@ function Letter(letter) {
             // display it
             return this.letter;
         } // else show dash
-            return " - ";        
+        return " - ";
+
     };
 };
 
