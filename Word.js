@@ -12,9 +12,10 @@ function Word(randomWord) {
         this.letters.push(new Letter(this.randomWord[i]));
     }
     // take a character input and call guess function on each letter object
-    this.checkGuess = function (guess) {
-        var checkUserInput = new Letter(guess);
-            checkUserInput.guess(guess);
+    this.checkGuess = function (userInput) {
+       var checkUserInput = new Letter(userInput);
+        return checkUserInput.guess(userInput);
+        
     }
     this.toString = function () {
         var output = "";
