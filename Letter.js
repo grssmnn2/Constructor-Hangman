@@ -9,7 +9,7 @@ function Letter(letter) {
             // change letterGuessed to true
             this.letterGuessed = true;
         }
-    }
+    };
     // returns letter if guessed is true, or shows all underscores if guessed is false
     this.returnLetter = function () {
         // if the letter has been guessed
@@ -18,8 +18,8 @@ function Letter(letter) {
             return this.letter;
         } // else show dash
         return " - ";
-
     };
+   
 };
 
 module.exports = Letter;
