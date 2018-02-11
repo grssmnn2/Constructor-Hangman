@@ -29,10 +29,10 @@ function ask(){
       //   }
       }
 ]).then(function(answers){
-      var storage = answers.userGuess;    
+      var storage = answers.userGuess;
+      newWord.checkGuess(storage); //Check if letterGuessed = true or false based on user input   
       if (guessesLeft > 0 && guesses.indexOf(storage)=== -1){
         guesses.push(storage);
-        newWord.checkGuess(storage);
         guessesLeft--;
         console.log("You have " + guessesLeft + " guesses left.");
         console.log("Already guessed: " + guesses);

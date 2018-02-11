@@ -9,6 +9,7 @@ function Letter(letter) {
             // change letterGuessed to true
             this.letterGuessed = true;
         }
+        console.log(this.letter);
     };
     // returns letter if guessed is true, or shows all underscores if guessed is false
     this.returnLetter = function () {
